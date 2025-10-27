@@ -14,7 +14,7 @@ body {
 	padding: 0;
 	display: flex;
 	flex-wrap: wrap;
-	font-family: 'Tahoma';
+	font-family: 'Tahoma', sans-serif;
 	font-size: 80%;
 }
 
@@ -50,8 +50,10 @@ figure {
 }
 
 svg{
-  font-family: MyCustom;
+	font-family: MyCustom;
+	
 }
+
 video {
   -webkit-clip-path: url(#clip);
   clip-path: url(#clip);
@@ -61,4 +63,11 @@ video {
   object-fit: cover;
   height: 100%;
   width: 100%;
+  opacity: 0;
+  
 }
+
+video.show {
+	opacity: 1;
+}
+

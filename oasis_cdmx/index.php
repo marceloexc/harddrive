@@ -14,7 +14,6 @@
 				</h4>
 			</header>
 
-
 			<article>
 				<h1>
 					<b><i>Oasis</i></b>
@@ -35,7 +34,13 @@
 				<img src="oasis_film10.jpg" alt="">
 				<img src="000017750011.jpg" alt="">
 				<img src="oasis_film11.jpg" alt="">
+				
+				<figure>
 				<img src="oasis_film12.jpg" alt="">
+				<figcaption>They found drugs in there</figcaption>
+				</figure>
+
+				
 				<img src="oasis_film13.jpg" alt="">
 				<img src="oasis_film14.jpg" alt="">
 				<img src="oasis_film15.jpg" alt="">
@@ -45,12 +50,6 @@
 
 		<footer>
 
-			<!-- <p>
-				 My footer
-
-				 Ages 4 and up
-				 </p>
-			-->
 		</footer>
 		
 	</body>

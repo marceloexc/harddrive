@@ -1,10 +1,17 @@
 function isHDRCompatible() {
-	if (navigator.vendor == "Apple Computer, Inc.") {
-		console.log(1);
+	if (window.matchMedia("(dynamic-range: high)").matches) {
 		return true;
 	}
+	return false;
 }
 
-if (isHDRCompatible()) {
-	console.log("I can show HDR");
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const hdrVideo = document.querySelector("#bright");
+  const sdrVideo = document.querySelector("#fallback");
+
+  if (isHDRCompatible()) {
+    hdrVideo.classList.add("show");
+  } else {
+    sdrVideo.classList.add("show");
+  }
+});
