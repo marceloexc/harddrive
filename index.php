@@ -65,11 +65,32 @@
 					if ($f == '.' || $f == '..' || $f == '.git' || $f == "static") continue;
 
 					if (is_dir($f)) {
-						echo "<li><a href=\"$f\">$f</a></li>";
+
+						$board_dir = scandir($f);
+
+						echo "<li><a href=\"$f\">$f</a>";
+
+						foreach ($board_dir as $ff) {
+							$file_path = "$f/$ff";
+
+							// get date file
+							if (is_file($file_path) && $ff === "date") {
+								$file_handle = fopen($file_path, "r");
+								if ($file_handle) {
+									while (!feof($file_handle)) {
+										$line = fgets($file_handle);		
+									}
+									fclose($file_handle);
+									echo " | $line";
+
+								} else { echo "<p>Could not open $file_path</p>"; }
+							}
+						}
+						echo "</li>";
+						
 					}
 				}
 				?>
-
 			</ul>
 		</main>
 
