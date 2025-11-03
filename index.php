@@ -82,7 +82,7 @@
 
 		<footer>
 			<?php
-			$footer_array = array("/static/soriginal.jpg", "/static/lunch.jpeg", "/static/dusk.jpeg", "/static/still.gif");
+			$footer_array = array("/static/soriginal.jpg", "/static/lunch.jpeg", "/static/dusk.jpeg", "/static/still.gif", "/static/att.jpg");
 
 			$footer_image_key = array_rand($footer_array, 1);
 
@@ -94,7 +94,7 @@
 			?>
 
 			<p>
-				you might like...
+				You may like:
 			</p>
 
 			<a href="https://rm2000.app">rm2000 tape recorder for macintosh</a>
