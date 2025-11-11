@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>my hard drive</title>
+		<title>Western Digital</title>
 		<link rel="stylesheet" href="style.css" type="text/css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="hdr.js"> </script>
@@ -42,11 +42,20 @@
 					</svg>
 				</div>
 
-				<img src="/static/banner.jpg">
+				<?php
+				$banner_array = array("/static/banner.jpg", "/static/banner2.jpg");
+
+				$banner_image_key = array_rand($banner_array, 1);
+
+				$header_img = $banner_array[$banner_image_key];
+				echo "<img src=$header_img>";
+				
+				?>
+				<img static/banner.jpg">
 			</header>
 			<h3>
 			</h3>
-			<ul>
+			<ul style="list-style: none; padding-left: 20px;">
 				<?php
 				$directory = ".";
 				$files = scandir($directory);
@@ -72,7 +81,7 @@
 			?>
 
 			<p>
-				You may like:
+				cool links
 			</p>
 
 			<a href="https://rm2000.app">rm2000 tape recorder for macintosh</a>
@@ -89,14 +98,16 @@
 			<br>
 			<a href="https://otto-b.info/" >otto benson</a>
 			<br>
-			<a href="https://www.johnnyhardstaff.com/home/future-of-gaming">hardstaff at his best</a>
+			<a href="https://www.php.net/">php</a>
+			<br>
+				<a href="https://www.johnnyhardstaff.com/home/future-of-gaming">hardstaff at his best</a>
 			<br>
 			<a href="https://orllewin.uk/pcr/">pudsey clough radio</a>
 			<br>
 			<a href="https://emacsformacos.com/">emacs for mac os</a>
 			<br>
-			<a href="http://www.danamania.com/print/">cool nerdy posters</a>
-			<br>
+			<!-- <a href="http://www.danamania.com/print/">cool nerdy posters</a>
+				 <br> -->
 			
 				<?php
 

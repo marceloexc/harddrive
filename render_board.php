@@ -110,10 +110,17 @@ class BoardListingsRenderer
 
 			$formattedDate = strtolower(date('M j, Y', $board->date_unix));
 
-			echo "<li>
-            <a href=\"{$board->path}\">{$board->title}</a>
+			if ($board->type == BoardType::Naked) {
+				echo "<li>
+            <a href=\"{$board->path}/\">{$board->title}</a>
+          </li>";
+				
+			} else {
+				echo "<li>
+            <a href=\"{$board->path}/\">{$board->title}</a>
             | {$formattedDate}
           </li>";
+			}
         }
 	}
 }
