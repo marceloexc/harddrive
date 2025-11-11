@@ -5,6 +5,9 @@
 		<link rel="stylesheet" href="style.css" type="text/css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="hdr.js"> </script>
+		<?php
+		include 'render_board.php';
+		?>
 	</head>
 	<body>
 		<main>
@@ -41,41 +44,16 @@
 
 				<img src="/static/banner.jpg">
 			</header>
-
+			<h3>
+			</h3>
 			<ul>
 				<?php
 				$directory = ".";
 				$files = scandir($directory);
-				// really ugly 
-				foreach ($files as $f) {
-					if ($f == '.' || $f == '..' || $f == '.git' || $f == "static") continue;
 
-					if (is_dir($f)) {
-
-						$board_dir = scandir($f);
-
-						echo "<li><a href=\"$f\">$f</a>";
-
-						foreach ($board_dir as $ff) {
-							$file_path = "$f/$ff";
-
-							// get date file
-							if (is_file($file_path) && $ff === "date") {
-								$file_handle = fopen($file_path, "r");
-								if ($file_handle) {
-									while (!feof($file_handle)) {
-										$line = fgets($file_handle);		
-									}
-									fclose($file_handle);
-									echo " | $line";
-
-								} else { echo "<p>Could not open $file_path</p>"; }
-							}
-						}
-						echo "</li>";
-						
-					}
-				}
+				$boards = new BoardListingsRenderer(".");
+				$boards->render();
+			
 				?>
 			</ul>
 		</main>

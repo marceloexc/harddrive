@@ -1,0 +1,121 @@
+<?php
+enum BoardType: string {
+    case DateFile = 'date';
+    case ConfigFile = 'config';
+    case Naked = 'naked';
+}
+
+class Board
+{
+	public string $title;
+	public string $path;
+    private string $dir_name;
+	public BoardType $type;
+	public int $date_unix;
+
+	public function __construct(string $path, string $dir_name)
+	{
+		$this->path = $path;
+        $this->dir_name = $dir_name;
+		$this->type = $this->getBoardType();
+		$this->date_unix = $this->getBoardDate();
+        $this->title = $this->getBoardTitle();
+		/* print_r($this->path);
+		   print_r($this->type);
+		   print_r($this->date_unix);
+
+		   echo "<br>"; */
+	}
+
+	private function getBoardType(): BoardType
+	{
+		$files = scandir($this->path);
+
+		foreach ($files as $f) {
+			if (is_file("$this->path/$f") && $f === "config.ini") {
+				return BoardType::ConfigFile;
+			}
+		}
+
+		foreach ($files as $f) {
+			if (is_file("$this->path/$f") && $f === "date") {
+				return BoardType::DateFile;
+			}
+		}
+
+		return BoardType::Naked;
+	}
+
+	private function getBoardDate(): int
+	{
+		switch ($this->type) {
+			case BoardType::ConfigFile:
+				$ini_array = parse_ini_file("$this->path/config.ini", false);
+				/* echo $ini_array['date']; */
+				$date = strtotime($ini_array['date']);
+				return $date;
+			case BoardType::DateFile:
+				$d_contents = file_get_contents("$this->path/date", true);
+				$date = strtotime($d_contents);
+				return $date;
+			case BoardType::Naked:
+				$date = strtotime(date ("F d Y H:i:s.", filemtime($this->path)));
+				/* echo implode(',', $date); */
+				return $date;
+		}
+	}
+
+	private function getBoardTitle(): string
+	{
+		switch ($this->type)
+		{
+			case BoardType::ConfigFile:
+            $ini_array = parse_ini_file("$this->path/config.ini", false);
+            $title = $ini_array['title'];
+            return $title;
+			default:
+            return $this->dir_name;
+		}
+	}
+
+}
+
+
+class BoardListingsRenderer
+{
+    private string $directory;
+	private array $boards = [];
+
+    public function __construct(string $directory = "")
+    {
+        $this->directory = rtrim($directory, DIRECTORY_SEPARATOR);
+    }
+
+    public function render(): void
+    {
+        $files = scandir($this->directory);
+
+        foreach ($files as $f) {
+            if (in_array($f, ['.', '..', '.git', 'static'])) continue;
+
+            $full_path = $this->directory . DIRECTORY_SEPARATOR . $f;
+
+            if (is_dir($full_path)) {
+                $this->boards[] = new Board($full_path, $f);
+            }
+		}
+        usort($this->boards, fn($b, $a) => $b->date_unix <=> $a->date_unix);
+		
+        foreach ($this->boards as $board) {
+
+			$formattedDate = strtolower(date('M j, Y', $board->date_unix));
+
+			echo "<li>
+            <a href=\"{$board->path}\">{$board->title}</a>
+            | {$formattedDate}
+          </li>";
+        }
+	}
+}
+
+?>
