@@ -3,6 +3,7 @@
 	<head>
 		<title>Western Digital</title>
 		<link rel="stylesheet" href="style.css" type="text/css">
+		<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="hdr.js"> </script>
 		<?php
@@ -43,7 +44,7 @@
 				</div>
 
 				<?php
-				$banner_array = array("/static/banner.jpg", "/static/banner2.jpg");
+				$banner_array = array("/static/banner.jpg", "/static/banner2.jpg", "/static/keepoff.jpg");
 
 				$banner_image_key = array_rand($banner_array, 1);
 
@@ -69,7 +70,7 @@
 
 		<footer>
 			<?php
-			$footer_array = array("/static/soriginal.jpg", "/static/lunch.jpeg", "/static/dusk.jpeg", "/static/still.gif", "/static/att.jpg");
+			$footer_array = array("/static/soriginal.jpg", "/static/lunch.jpeg", "/static/dusk.jpeg", "/static/still.gif", "/static/att.jpg", "/static/light.jpg", "/static/msp.jpg", "/static/chrysler.jpg", "/static/hat.png", "/static/hardstaff.webp", "/static/hardstaff2.webp");
 
 			$footer_image_key = array_rand($footer_array, 1);
 
