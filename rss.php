@@ -54,15 +54,6 @@ foreach ($boards as $board) {
     $description = $doc->getElementsByTagName("title")->item(0)->textContent;
     $date = date(DATE_RFC822, $board->date_unix);
 
-    // echo file_get_contents($index);
-    // echo '<pre>';
-    // print_r($board);
-    // echo '</pre>';
-
-    // echo $title;
-    // echo $link;
-    // echo $description;
-
     $item = $masterXml->createElement("item");
     $item->appendChild($masterXml->createElement("title", $title));
     $item->appendChild($masterXml->createElement("link", $link));
@@ -84,6 +75,7 @@ foreach ($boards as $board) {
         }
     }
 
+    // replace all relative links to absolute links
     $innerHtml = preg_replace_callback(
         '/src="([^"]+)"/',
         function ($matches) use ($link) {
@@ -95,6 +87,11 @@ foreach ($boards as $board) {
         },
         $innerHtml
     );
+
+    // get rid of the "Figure X" <span>'s that org mode html export loves to make
+    // this is done by regex...
+    $pattern = '/<span[^>]*>\s*Figure\s*\d+[:.]?\s*<\/span>/';
+    $innerHtml = preg_replace($pattern, '', $innerHtml);
 
     $content = $masterXml->createElement("content:encoded");
     $cdata = $masterXml->createCDATASection($innerHtml);
