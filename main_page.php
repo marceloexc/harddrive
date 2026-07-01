@@ -5,24 +5,13 @@
 	<head>
 		<link rel="stylesheet" href="style.css" type="text/css">
 		<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+
+		<!-- ios use, this will give websites added to the home screen the favicon as the icon -->
+		<link rel="apple-touch-icon" sizes="128x128" href="/favicon.png">
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="hdr.js"> </script>
-		<?php
-		include 'render_board.php';
-
-		$motd_array = array("Disco Duro",
-							"Lobotomy Software",
-							"My life on the internet",
-							"Mendez Forever",
-							"Marcelographic",
-							"Im fine...bye bye",
-							"Pig worker");
-		$motd_key = array_rand($motd_array, 1);
-
-		$motd = $motd_array[$motd_key];
-
-		echo "<title>$motd</title>";
-		?>
+		<title>harddrive</title>
 	</head>
 	<body>
 		<main>
