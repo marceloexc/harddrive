@@ -86,7 +86,8 @@
 			<h3>
 			</h3>
 			<ul style="list-style: none; padding-left: 20px;" class="listing">
-				<?php
+				<?php 
+				include 'render_board.php';
 				$boards = new BoardListingsRenderer("content");
 				$boards->populateBoards();
 				$boards->render();
@@ -126,7 +127,8 @@
 								  "/static/fox.jpg",
 								  "/static/wildebeest.png",
                                   "/static/itunes.png",
-                                  "/static/john-pankow-richard-kind.webp");
+                                  "/static/john-pankow-richard-kind.webp",
+                                  "/static/chocolate.jpg");
 
 			// reed warblers use the inclination of the magnetic field (magenta lines) to navigate to and find their breeding sites (yellow dots)
 
@@ -175,6 +177,8 @@
 				<a href="https://www.johnnyhardstaff.com/home/future-of-gaming">hardstaff at his best</a>
 				<br>
 				<a href="https://orllewin.uk/pcr/">pudsey clough radio</a>
+				<br>
+				<a href="https://honeysuckleand.rf.gd/">honeysuckle, and</a>
 				<br>
 				<a href="https://eerilyrealistic.com/">eerilyrealistic</a>
 				<br>
