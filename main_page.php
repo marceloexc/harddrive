@@ -212,7 +212,7 @@
 
 			<br>	<br>
 			<p>
-				marcelo mendez 2026. <a href="/all.html">all</a>
+				<i>Hard Drive</i> is a photoblog by <a href="/all.html">Marcelo Mendez</a>
 			</p>
 
 
