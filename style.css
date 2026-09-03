@@ -123,3 +123,7 @@ figcaption {
 	}
 }
 		
+.hd-text {
+	font-family: "HappyTimes";
+	letter-spacing: -.045em;
+}

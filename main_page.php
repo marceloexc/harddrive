@@ -212,7 +212,7 @@
 
 			<br>	<br>
 			<p>
-				<i>Hard Drive</i> is a photoblog by <a href="/all.html">Marcelo Mendez</a>
+				<span class="hd-text">Hard Drive</span> is a photoblog by <a href="/all.html">Marcelo Mendez</a>
 			</p>
 
 
