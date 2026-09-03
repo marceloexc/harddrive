@@ -156,7 +156,7 @@ class BoardListingsRenderer
 
             if (!$board->visible) { continue; }
 
-			$formattedDate = strtolower(date('M j, Y', $board->date_unix));
+			$formattedDate = strtolower(date('Y-m-d', $board->date_unix));
 
 			if ($board->type == BoardType::Naked) {
 				echo "<li>
