@@ -41,6 +41,11 @@ if (file_exists($contentPath) && is_file($contentPath)) {
 	exit;
 }
 
+if (is_dir($contentPath) && substr($uri, -1) !== '/') {
+	header("Location: " . $uri . "/", true, 301);
+	exit;
+}
+
 
 // dir inside /content → serve its index.php or index.html
 if (is_dir($contentPath)) {
